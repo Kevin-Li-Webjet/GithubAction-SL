@@ -2,5 +2,5 @@ name: 'test'
 author: 'Kevin Li'
 description: 'test lib'
 
-runs:
+runs: |
   echo "123"
