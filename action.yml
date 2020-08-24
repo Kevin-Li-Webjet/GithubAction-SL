@@ -7,6 +7,10 @@ inputs:
     description: 'test v1'
     required: true
     default: 'dev'
+  registry:
+    description: 'docker registry'
+    required: true
+    default: 'containerregistrydev.azurecr.io'
 
 runs:
   using: "composite"
@@ -16,7 +20,7 @@ runs:
         echo ${{ inputs.v1 }}
         chmod +x $GITHUB_ACTION_PATH/script.sh
         chmod +x $GITHUB_ACTION_PATH/test.sh
-        $GITHUB_ACTION_PATH/test.sh ${{ inputs.v1 }}
+        $GITHUB_ACTION_PATH/test.sh ${{ inputs.registry }}
       shell: bash
     - run: $GITHUB_ACTION_PATH/script.sh 
       shell: bash

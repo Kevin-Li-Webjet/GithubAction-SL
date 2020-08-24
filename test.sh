@@ -1,1 +1,1 @@
-docker build  -t "testimg:1" .
+docker build --build-arg REGISTRY=$1 -t "testimg:1" .
