@@ -12,7 +12,7 @@ runs:
   using: "composite"
   steps: 
     - run: |
-        echo "123"
+        echo "1234"
         echo ${{ inputs.who-to-greet }}
         $GITHUB_ACTION_PATH/test.sh
       shell: bash
