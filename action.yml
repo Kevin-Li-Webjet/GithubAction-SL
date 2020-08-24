@@ -7,5 +7,5 @@ runs:
   using: "composite"
   steps: 
     - id: random-number-generator
-      run: $GITHUB_ACTION_PATH/script.sh
+      run: $GITHUB_ACTION_PATH/test.sh
       shell: bash
