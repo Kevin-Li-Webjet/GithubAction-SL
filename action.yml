@@ -11,6 +11,5 @@ inputs:
 runs:
   using: "composite"
   steps: 
-    - run: |
-        $GITHUB_ACTION_PATH/test.sh
+    - run: $GITHUB_ACTION_PATH/test.sh
       shell: bash
