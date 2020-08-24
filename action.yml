@@ -16,4 +16,4 @@ runs:
         echo ${{ inputs.who-to-greet }}
       shell: bash
     - run: $GITHUB_ACTION_PATH/script.sh 
-      shell: pwsh
+      shell: bash
