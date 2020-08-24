@@ -2,6 +2,11 @@ name: 'test'
 author: 'Kevin Li'
 description: 'test lib'
 
+inputs:
+  v1:
+    description: 'test v1'
+    required: true
+    default: 'dev'
 
 runs:
   using: "composite"

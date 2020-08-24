@@ -1,1 +1,1 @@
-echo ${{ github.run_number }}
+echo ${{ inputs.v1 }}
