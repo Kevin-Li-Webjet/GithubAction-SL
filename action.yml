@@ -3,24 +3,23 @@ author: 'Kevin Li'
 description: 'test lib'
 
 inputs:
-  v1:
-    description: 'test v1'
-    required: true
-    default: 'dev'
   registry:
     description: 'docker registry'
     required: true
     default: 'containerregistrydev.azurecr.io'
+  image-name:
+    description: 'docker image name'
+    required: true
+    default: 'webjet-github'
 
 runs:
   using: "composite"
   steps: 
     - run: |
         echo "1234567"
-        echo ${{ inputs.v1 }}
-        chmod +x $GITHUB_ACTION_PATH/script.sh
+        GITHUBSHA=${{ github.sha }}
+        TAG=$(echo $TAG | cut -c1-6)
+        echo $TAG
         chmod +x $GITHUB_ACTION_PATH/test.sh
-        $GITHUB_ACTION_PATH/test.sh ${{ inputs.registry }}
-      shell: bash
-    - run: $GITHUB_ACTION_PATH/script.sh 
+        $GITHUB_ACTION_PATH/test.sh ${{ inputs.registry }} ${{ inputs.image-name }}
       shell: bash
