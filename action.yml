@@ -1,4 +1,4 @@
-name: 'test3'
+name: 'test4'
 author: 'Kevin Li'
 description: 'test lib'
 
@@ -12,7 +12,8 @@ runs:
   using: "composite"
   steps: 
     - run: |
-        echo "1234"
+        echo "12345"
         echo ${{ inputs.who-to-greet }}
+        $GITHUB_ACTION_PATH/script.sh 
         $GITHUB_ACTION_PATH/test.sh  ${{ inputs.who-to-greet }}
       shell: bash
