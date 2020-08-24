@@ -6,6 +6,7 @@ description: 'test lib'
 runs:
   using: "composite"
   steps: 
-    - id: random-number-generator
-      run: script.sh
+    - run: |
+        echo "123"
+        echo "abc"
       shell: bash
