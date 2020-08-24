@@ -18,7 +18,7 @@ runs:
     - run: |
         echo "12345678"
         GITHUBSHA=${{ github.sha }}
-        TAG=$(echo $TAG | cut -c1-6)
+        TAG=$(echo $GITHUBSHA | cut -c1-6)
         echo $TAG
         echo ${{ github.sha }}
         echo "TAG done"
