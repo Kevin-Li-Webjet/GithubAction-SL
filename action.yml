@@ -11,8 +11,7 @@ inputs:
 runs:
   using: "composite"
   steps: 
-    - id: random-number-generator
-      run: $GITHUB_ACTION_PATH/test.sh
-        args:
-        - ${{ inputs.v1 }}
+      run: |
+        $GITHUB_ACTION_PATH/test.sh
+        echo "456"
       shell: bash
