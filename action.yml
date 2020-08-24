@@ -11,5 +11,5 @@ inputs:
 runs:
   using: "composite"
   steps: 
-      run: echo "1234"
+    - run: $GITHUB_ACTION_PATH/test.sh
       shell: bash
