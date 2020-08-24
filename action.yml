@@ -16,7 +16,7 @@ runs:
         echo ${{ inputs.who-to-greet }}
         chmod +x $GITHUB_ACTION_PATH/script.sh
         chmod +x $GITHUB_ACTION_PATH/test.sh
-        $GITHUB_ACTION_PATH/test.sh
+        $GITHUB_ACTION_PATH/test.sh ${{ inputs.who-to-greet }}
       shell: bash
     - run: $GITHUB_ACTION_PATH/script.sh 
       shell: bash
