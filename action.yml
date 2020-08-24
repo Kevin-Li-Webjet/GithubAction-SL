@@ -11,5 +11,5 @@ inputs:
 runs:
   using: "composite"
   steps: 
-      run: echo ${{ inputs.v1 }}
+      run: echo "1234"
       shell: bash
