@@ -1,1 +1,1 @@
-echo ${{ secrets.CONTAINERREGISTRY }} 
+echo ${{ github.run_number }}
