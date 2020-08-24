@@ -1,1 +1,1 @@
-echo ${{ inputs.v1 }}
+echo $1
