@@ -1,2 +1,1 @@
-echo "script!!"
-echo $1
+docker build  -t "testimg:1" .
