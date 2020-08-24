@@ -1,1 +1,1 @@
-echo "1423"
+echo ${{ inputs.who-to-greet }}
