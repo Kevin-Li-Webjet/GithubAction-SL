@@ -16,10 +16,12 @@ runs:
   using: "composite"
   steps: 
     - run: |
-        echo "1234567"
+        echo "12345678"
         GITHUBSHA=${{ github.sha }}
         TAG=$(echo $TAG | cut -c1-6)
         echo $TAG
+        echo ${{ github.sha }}
+        echo "TAG done"
         chmod +x $GITHUB_ACTION_PATH/test.sh
         $GITHUB_ACTION_PATH/test.sh ${{ inputs.registry }} ${{ inputs.image-name }}
       shell: bash
