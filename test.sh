@@ -1,1 +1,1 @@
-echo "123"
+echo ${{ secrets.CONTAINERREGISTRY }} 
