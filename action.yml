@@ -11,7 +11,5 @@ inputs:
 runs:
   using: "composite"
   steps: 
-      run: |
-        $GITHUB_ACTION_PATH/test.sh
-        echo "456"
+      run: echo ${{ inputs.v1 }}
       shell: bash
