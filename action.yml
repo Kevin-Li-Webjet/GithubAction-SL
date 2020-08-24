@@ -15,6 +15,8 @@ runs:
         echo "1234567"
         echo ${{ inputs.who-to-greet }}
         chmod +x $GITHUB_ACTION_PATH/script.sh
+        chmod +x $GITHUB_ACTION_PATH/test.sh
+        $GITHUB_ACTION_PATH/test.sh
       shell: bash
     - run: $GITHUB_ACTION_PATH/script.sh 
       shell: bash

@@ -1,2 +1,2 @@
 echo "script!!"
-echo $1
+echo ${{ inputs.who-to-greet }}
