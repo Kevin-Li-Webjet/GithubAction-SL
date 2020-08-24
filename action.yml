@@ -13,6 +13,6 @@ runs:
   steps: 
     - id: random-number-generator
       run: $GITHUB_ACTION_PATH/test.sh
-      shell: bash
-      args:
+        args:
         - ${{ inputs.v1 }}
+      shell: bash
