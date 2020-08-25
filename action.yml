@@ -26,5 +26,5 @@ runs:
         GITHUBSHA=${{ github.sha }}
         TAG=$(echo $GITHUBSHA | cut -c1-6)
         chmod +x $GITHUB_ACTION_PATH/test.sh
-        $GITHUB_ACTION_PATH/test.sh ${{ inputs.registry }} ${{ inputs.build-args }} ${{ inputs.image-name }} $TAG
+        $GITHUB_ACTION_PATH/test.sh ${{ inputs.registry }} ${{ inputs.build-args }} ${{ inputs.image-name }} $TAG  ${{ inputs.dockerfile-path }}
       shell: bash

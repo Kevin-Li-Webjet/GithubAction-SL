@@ -35,6 +35,7 @@ uses() {
 
 #### MAIN
 main(){
+    echo "[INFO] INPUT: $1,$2,$3,$4,$5"
     BUILDPARAMS="--build-arg REGISTRY=${INPUT_REGISTRY}"
     sanitize "${INPUT_IMAGENAME}" "Image Name"
 
