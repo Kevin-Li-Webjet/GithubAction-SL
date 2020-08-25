@@ -18,7 +18,7 @@ addBuildArgs() {
 }
 
 sanitize() {
-  if [ "-" = "${1}" ]; then
+  if [ ! -z "${1}" ]; then
     >&2 echo "Unable to find the ${2}. Did you set with.${2}?"
     exit 1
   fi
@@ -30,11 +30,11 @@ useCustomDockerfile() {
 }
 
 uses() {
-  [ "-" = "${1}" ]
+  [ ! -z "${1}" ] 
 }
 
 usesBoolean() {
-  [ "${1}" = "true" ]
+  [ ! -z "${1}" ] && [ "${1}" = "true" ]
 }
 
 #### MAIN
