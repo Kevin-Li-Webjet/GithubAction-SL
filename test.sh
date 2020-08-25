@@ -30,6 +30,7 @@ useCustomDockerfile() {
 }
 
 uses() {
+  echo "check value: ${1}"
   [ ! -z "${1}" ] 
 }
 
