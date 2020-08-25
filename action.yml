@@ -9,6 +9,7 @@ inputs:
   webhook-uri:
     description: Microsoft Teams webhook URI
     required: true
+    default: ${{ secrets.KEVIN_MS_NOTIFICATION }}
   github-token:
     description: Github token
     required: true
