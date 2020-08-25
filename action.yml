@@ -7,6 +7,10 @@ inputs:
     description: 'docker registry'
     required: true
     default: 'containerregistrydev.azurecr.io'
+  registry-subpath:
+    description: 'registry subpath'
+    required: true
+    default: 'webjet'  
   image-name:
     description: 'docker image name'
     required: true
