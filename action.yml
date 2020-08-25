@@ -34,12 +34,12 @@ runs:
     - run: |
         GITHUBSHA=${{ github.sha }}
         TAG=$(echo $GITHUBSHA | cut -c1-6)
-        $INPUT_REGISTRY=${{ inputs.registry }}
-        $INPUT_BUILDARGS=${{ inputs.build-args }}
-        $INPUT_IMAGENAME=${{ inputs.image-name }}
-        $INPUT_TAG=$TAG
-        $INPUT_DOCKERFILED_PATH=${{ inputs.dockerfile-path }} 
-        $INPUT_FLAG_PUSH=${{ inputs.push }}
+        export INPUT_REGISTRY=${{ inputs.registry }}
+        export INPUT_BUILDARGS=${{ inputs.build-args }}
+        export INPUT_IMAGENAME=${{ inputs.image-name }}
+        export INPUT_TAG=$TAG
+        export INPUT_DOCKERFILED_PATH=${{ inputs.dockerfile-path }} 
+        export INPUT_FLAG_PUSH=${{ inputs.push }}
         chmod +x $GITHUB_ACTION_PATH/test.sh
         $GITHUB_ACTION_PATH/test.sh
       shell: bash
