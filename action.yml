@@ -32,9 +32,18 @@ runs:
   using: "composite"
   steps: 
     - run: |
-        echo "12345678"
         GITHUBSHA=${{ github.sha }}
         TAG=$(echo $GITHUBSHA | cut -c1-6)
+        $INPUT_REGISTRY=${{ inputs.registry }}
+        $INPUT_BUILDARGS=${{ inputs.build-args }}
+        $INPUT_IMAGENAME=${{ inputs.image-name }}
+        $INPUT_TAG=$TAG
+        $INPUT_DOCKERFILED_PATH=${{ inputs.dockerfile-path }} 
+        $INPUT_FLAG_PUSH=${{ inputs.push }}
         chmod +x $GITHUB_ACTION_PATH/test.sh
-        $GITHUB_ACTION_PATH/test.sh ${{ inputs.registry }} ${{ inputs.build-args }} ${{ inputs.image-name }} $TAG  ${{ inputs.dockerfile-path }} ${{ inputs.push }}
+        $GITHUB_ACTION_PATH/test.sh
       shell: bash
+    # - run: |
+    #     chmod +x $GITHUB_ACTION_PATH/test.sh
+    #     $GITHUB_ACTION_PATH/test.sh ${{ inputs.registry }} ${{ inputs.build-args }} ${{ inputs.image-name }} $TAG  ${{ inputs.dockerfile-path }} ${{ inputs.push }}
+    #   shell: bash
