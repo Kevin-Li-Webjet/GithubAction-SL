@@ -24,7 +24,7 @@ inputs:
   card-layout-start:
     description: Card layout on start (i.e. "complete", "cozy", "compact")
     required: false
-    default: complete
+    default: cozy
   card-layout-exit:
     description: Card layout on end (i.e. "complete", "cozy", "compact")
     required: false
