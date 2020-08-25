@@ -62,7 +62,8 @@ main(){
     # Push
     echo "[INFO] CHECK PUSH FLAG: ${INPUT_FLAG_PUSH}"
     if useBoolean "${INPUT_FLAG_PUSH}"; then
-        docker push "${INPUT_REGISTRY}/webjet/${INPUT_IMAGENAME}:${INPUT_TAG}"
+        PUSH_BODY="${INPUT_REGISTRY}/webjet/${INPUT_IMAGENAME}:${INPUT_TAG}"
+        docker push ${PUSH_BODY}
     fi
 
 }
