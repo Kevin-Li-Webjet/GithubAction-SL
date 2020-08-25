@@ -35,7 +35,7 @@ uses() {
 
 #### MAIN
 main(){
-    echo "[INFO] INPUT: $1,$2,$3,$4,$5"
+    echo "[INFO] INPUT: $INPUT_REGISTRY,$INPUT_BUILDARGS,$INPUT_IMAGENAME,$INPUT_TAG,$INOUT_DOCKERFILED_PATH"
     BUILDPARAMS="--build-arg REGISTRY=${INPUT_REGISTRY}"
     sanitize "${INPUT_IMAGENAME}" "Image Name"
 
