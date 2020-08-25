@@ -11,6 +11,12 @@ inputs:
     description: 'docker image name'
     required: true
     default: 'webjet-github'
+  build-args:
+    description: 'docker build args'
+    required: false
+  dockerfile-path:
+    description: 'dockerfile path'
+    required: false
 
 runs:
   using: "composite"
@@ -19,9 +25,6 @@ runs:
         echo "12345678"
         GITHUBSHA=${{ github.sha }}
         TAG=$(echo $GITHUBSHA | cut -c1-6)
-        echo $TAG
-        echo ${{ github.sha }}
-        echo "TAG done"
         chmod +x $GITHUB_ACTION_PATH/test.sh
-        $GITHUB_ACTION_PATH/test.sh ${{ inputs.registry }} ${{ inputs.image-name }}
+        $GITHUB_ACTION_PATH/test.sh ${{ inputs.registry }} ${{ inputs.build-args }} ${{ inputs.image-name }} $TAG
       shell: bash
