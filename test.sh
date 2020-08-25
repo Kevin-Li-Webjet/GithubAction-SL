@@ -48,7 +48,7 @@ main(){
     addBuildArgs
 
     # ImageName & Tag
-    BUILD_TAGS=" -t ${INPUT_IMAGENAME}:${INPUT_TAG} "
+    BUILD_TAGS=" . -t ${INPUT_IMAGENAME}:${INPUT_TAG} "
 
     echo "[INFO] BUILD COMMAND: docker build ${BUILDPARAMS} ${BUILD_TAGS}"
     docker build ${BUILDPARAMS} ${BUILD_TAGS}
