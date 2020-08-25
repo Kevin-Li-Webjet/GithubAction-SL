@@ -17,13 +17,15 @@ inputs:
     default: 'webjet-github'
   build-args:
     description: 'docker build args'
-    required: false
+    required: true
+    default: '-'
   dockerfile-path:
     description: 'dockerfile path'
-    required: false
+    required: true
+    default: '-'
   push:
     description: 'also push image'
-    required: false
+    required: true
     default: 'false'
 
 runs:
