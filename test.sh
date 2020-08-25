@@ -41,7 +41,7 @@ usesBoolean() {
 main(){
     echo "[INFO] INPUT: $INPUT_REGISTRY;$INPUT_BUILDARGS;$INPUT_IMAGENAME;$INPUT_TAG;$INPUT_DOCKERFILED_PATH;$INPUT_FLAG_PUSH"
     BUILDPARAMS="--build-arg REGISTRY=${INPUT_REGISTRY}"
-    sanitize "${INPUT_IMAGENAME}" "Image Name"
+    sanitize "$INPUT_IMAGENAME" "Image Name"
 
     # Check PATH
     if uses "${INPUT_DOCKERFILED_PATH}"; then
