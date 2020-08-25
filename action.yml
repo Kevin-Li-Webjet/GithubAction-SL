@@ -21,6 +21,10 @@ inputs:
   dockerfile-path:
     description: 'dockerfile path'
     required: false
+  push:
+    description: 'also push image'
+    required: false
+    default: 'false'
 
 runs:
   using: "composite"
@@ -30,5 +34,5 @@ runs:
         GITHUBSHA=${{ github.sha }}
         TAG=$(echo $GITHUBSHA | cut -c1-6)
         chmod +x $GITHUB_ACTION_PATH/test.sh
-        $GITHUB_ACTION_PATH/test.sh ${{ inputs.registry }} ${{ inputs.build-args }} ${{ inputs.image-name }} $TAG  ${{ inputs.dockerfile-path }}
+        $GITHUB_ACTION_PATH/test.sh ${{ inputs.registry }} ${{ inputs.build-args }} ${{ inputs.image-name }} $TAG  ${{ inputs.dockerfile-path }} ${{ inputs.push }}
       shell: bash

@@ -6,7 +6,8 @@ INPUT_REGISTRY=$1
 INPUT_BUILDARGS=$2
 INPUT_IMAGENAME=$3
 INPUT_TAG=$4
-INOUT_DOCKERFILED_PATH=$5
+INPUT_DOCKERFILED_PATH=$5
+INPUT_FLAG_PUSH=$6
 
 ## FUNCTION
 addBuildArgs() {
@@ -24,23 +25,26 @@ sanitize() {
 }
 
 useCustomDockerfile() {
-  echo "[INFO] add-docker-path::${INOUT_DOCKERFILED_PATH}"
-  BUILDPARAMS="${BUILDPARAMS} -f ${INOUT_DOCKERFILED_PATH}"
+  echo "[INFO] add-docker-path::${INPUT_DOCKERFILED_PATH}"
+  BUILDPARAMS="${BUILDPARAMS} -f ${INPUT_DOCKERFILED_PATH}"
 }
 
 uses() {
   [ ! -z "${1}" ]
 }
 
+usesBoolean() {
+  [ ! -z "${1}" ] && [ "${1}" = "true" ]
+}
 
 #### MAIN
 main(){
-    echo "[INFO] INPUT: $INPUT_REGISTRY,$INPUT_BUILDARGS,$INPUT_IMAGENAME,$INPUT_TAG,$INOUT_DOCKERFILED_PATH"
+    echo "[INFO] INPUT: $INPUT_REGISTRY,$INPUT_BUILDARGS,$INPUT_IMAGENAME,$INPUT_TAG,$INPUT_DOCKERFILED_PATH"
     BUILDPARAMS="--build-arg REGISTRY=${INPUT_REGISTRY}"
     sanitize "${INPUT_IMAGENAME}" "Image Name"
 
     # Check PATH
-    if uses "${INOUT_DOCKERFILED_PATH}"; then
+    if uses "${INPUT_DOCKERFILED_PATH}"; then
         useCustomDockerfile
     fi
 
@@ -50,9 +54,17 @@ main(){
     # ImageName & Tag
     BUILD_TAGS=" . -t ${INPUT_REGISTRY}/webjet/${INPUT_IMAGENAME}:${INPUT_TAG} "
 
+    # Build
     echo "[INFO] BUILD COMMAND: docker build ${BUILDPARAMS} ${BUILD_TAGS}"
     docker build ${BUILDPARAMS} ${BUILD_TAGS}
     echo "[SUCCESS] Built: ${INPUT_REGISTRY}/webjet/${INPUT_IMAGENAME}:${INPUT_TAG}"
+
+    # Push
+    echo "[INFO] CHECK PUSH FLAG: ${INPUT_FLAG_PUSH}"
+    if useBoolean "${INPUT_FLAG_PUSH}"; then
+        docker push ${INPUT_REGISTRY}/webjet/${INPUT_IMAGENAME}:${INPUT_TAG}
+    if
+
 }
 
 
