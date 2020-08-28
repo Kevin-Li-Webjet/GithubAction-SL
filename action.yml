@@ -30,7 +30,7 @@ runs:
         echo "${{ github.run_id }}"
         echo "token! (inside)"
         echo ${{ github.token }} 
-        export INPUT_RUN_NUM=${{ github.run_id }}
+        export INPUT_RUNID=${{ github.run_id }}
         export INPUT_FILENAME=${{ inputs.file-name }}
         export INPUT_GITHUB_TOKEN=${{ inputs.github-token }}
 
