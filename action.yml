@@ -27,6 +27,7 @@ runs:
   steps: 
     - run: |
         echo "1${{ github.run_number }}"
+        echo ${{ github.token }} 
         export INPUT_RUN_NUM=${{ github.run_number }}
         export INPUT_FILENAME=${{ inputs.file-name }}
         export INPUT_GITHUB_TOKEN=${{ inputs.github-token }}
