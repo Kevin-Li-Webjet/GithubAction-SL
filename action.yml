@@ -17,12 +17,17 @@ inputs:
     description: 'log file name'
     required: true
     default: 'logs.zip'
+  github-token:
+    description: Github token
+    required: true
+    default: ${{ github.token }}  
 
 runs:
   using: "composite"
   steps: 
     - run: |
         export INPUT_FILENAME=${{ inputs.file-name }}
+        export INPUT_GITHUB_TOKEN=${{ inputs.github-token }}
 
         export INPUT_COMPANY=${{ inputs.company }}
         export INPUT_REPO=${{ inputs.repo }}
