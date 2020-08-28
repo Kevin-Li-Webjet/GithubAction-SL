@@ -26,7 +26,9 @@ runs:
   using: "composite"
   steps: 
     - run: |
-        echo "1${{ github.run_number }}"
+        echo "Run Number!(inside)"
+        echo "${{ github.run_number }}"
+        echo "token! (inside)"
         echo ${{ github.token }} 
         export INPUT_RUN_NUM=${{ github.run_number }}
         export INPUT_FILENAME=${{ inputs.file-name }}
