@@ -16,7 +16,7 @@ inputs:
   file-name:
     description: 'log file name'
     required: true
-    default: 'logs.zip'
+    default: 'logs.txt'
   github-token:
     description: 'Github token'
     required: true
