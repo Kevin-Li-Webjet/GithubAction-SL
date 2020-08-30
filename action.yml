@@ -18,9 +18,12 @@ inputs:
     required: true
     default: 'logs.zip'
   github-token:
-    description: Github token
+    description: 'Github token'
     required: true
     default: ${{ github.token }}  
+  job-id:
+    description: 'job id'
+    required: false
 
 runs:
   using: "composite"
@@ -31,6 +34,7 @@ runs:
         echo "token! (inside)"
         echo ${{ github.token }} 
         export INPUT_RUNID=${{ github.run_id }}
+        export INPUT_JOBID=${{ inputs.job-id }}
         export INPUT_FILENAME=${{ inputs.file-name }}
         export INPUT_GITHUB_TOKEN=${{ inputs.github-token }}
 
