@@ -6,20 +6,15 @@ inputs:
   env-json:
     description: 'docker registry'
     required: true
-    default: '{
-              "version": 1,
-              "CONTAINERREGISTRY": "containerregistrydev.azurecr.io",
-              "REGISTRY-SUBPATH": "webjet",
-              "COMPANY": "Webjet",
-              "KUBEBOT": "http://kubebot.default"
-            }'
+    default: '{"version":1,"REGISTRY":"containerregistrydev.azurecr.io","REGISTRY-SUBPATH":"webjet","COMPANY":"Webjet","KUBEBOT":"http://kubebot.default"}'
 runs:
   using: "composite"
   steps: 
     - run: |
-        CONTAINERREGISTRY=$(jq '.REGISTRY' json.json)
-        REGISTRY-SUBPATH=$(jq '.REGISTRY-SUBPATH' json.json)
-        COMPANY=$(jq '.COMPANY' json.json)
-        KUBEBOT=$(jq '.KUBEBOT' json.json)
+        echo ${{ inputs.env-json }} > data.json
+        CONTAINERREGISTRY=$(jq '.REGISTRY' data.json)
+        REGISTRY-SUBPATH=$(jq '.REGISTRY-SUBPATH' data.json)
+        COMPANY=$(jq '.COMPANY' data.json)
+        KUBEBOT=$(jq '.KUBEBOT' data.json)
       shell: bash
 
