@@ -7,5 +7,5 @@ runs:
   steps: 
     - run: |
         echo $TAG
-      shell: powershell
+      shell: bash
 
