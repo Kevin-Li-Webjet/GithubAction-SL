@@ -13,13 +13,10 @@ runs:
   using: "composite"
   steps: 
     - run: |
-        echo ${{ inputs.env-json }}
-
-
         echo ${{ inputs.env-json }} | base64 --decode > data.json
- #       CONTAINERREGISTRY=$(jq '.REGISTRY' data.json)
- #       REGISTRY-SUBPATH=$(jq '.REGISTRY-SUBPATH' data.json)
-#        COMPANY=$(jq '.COMPANY' data.json)
- #       KUBEBOT=$(jq '.KUBEBOT' data.json)
+        CONTAINERREGISTRY=$(jq '.REGISTRY' data.json)
+        REGISTRY-SUBPATH=$(jq '.REGISTRY-SUBPATH' data.json)
+        COMPANY=$(jq '.COMPANY' data.json)
+        KUBEBOT=$(jq '.KUBEBOT' data.json)
       shell: bash
 
