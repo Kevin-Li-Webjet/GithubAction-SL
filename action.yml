@@ -14,8 +14,11 @@ runs:
   steps: 
     - run: |
         echo ${{ inputs.env-json }} | base64 --decode > data.json
-        CONTAINERREGISTRY=$(jq '.REGISTRY' data.json)
-        COMPANY=$(jq '.COMPANY' data.json)
-        KUBEBOT=$(jq '.KUBEBOT' data.json)
+        export CONTAINERREGISTRY=$(jq '.REGISTRY' data.json)
+        export COMPANY=$(jq '.COMPANY' data.json)
+        export KUBEBOT=$(jq '.KUBEBOT' data.json)
+        echo $CONTAINERREGISTRY
+        echo $COMPANY
+        echo $KUBEBOT
       shell: bash
 
