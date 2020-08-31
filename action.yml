@@ -15,9 +15,11 @@ runs:
     - run: |
         echo ${{ inputs.env-json }} | base64 --decode > data.json
         CONTAINERREGISTRY=$(jq '.REGISTRY' data.json)
+        REGISTRY_SUBPATH=$(jq '.REGISTRY_SUBPATH' data.json)
         COMPANY=$(jq '.COMPANY' data.json)
         KUBEBOT=$(jq '.KUBEBOT' data.json)
         echo "::set-env name=CONTAINERREGISTRY::$CONTAINERREGISTRY"
+        echo "::set-env name=REGISTRY_SUBPATH::$REGISTRY_SUBPATH"
         echo "::set-env name=COMPANY::$COMPANY"
         echo "::set-env name=KUBEBOT::$KUBEBOT"
         echo $CONTAINERREGISTRY
