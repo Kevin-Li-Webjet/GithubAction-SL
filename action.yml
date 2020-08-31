@@ -1,50 +1,11 @@
 name: 'Docker Build'
 description: 'build image, push image (optional)'
 
-inputs:
-  company:
-    description: 'Company'
-    required: true
-    default: 'Kevin-Li-Webjet'
-  repo:
-    description: 'repo'
-    required: true
-    default: 'Git-Action-Test'  
-  release-id:
-    description: 'release id'
-    required: true
-  file-name:
-    description: 'log file name'
-    required: true
-    default: 'logs.txt'
-  github-token:
-    description: 'Github token'
-    required: true
-    default: ${{ github.token }}  
-  job-id:
-    description: 'job id'
-    required: false
 
 runs:
   using: "composite"
   steps: 
     - run: |
-        echo "Run Number!(inside)"
-        echo "${{ github.run_id }}"
-        echo "token! (inside)"
-        echo ${{ github.token }} 
-        export INPUT_RUNID=${{ github.run_id }}
-        export INPUT_JOBID=${{ inputs.job-id }}
-        export INPUT_FILENAME=${{ inputs.file-name }}
-        export INPUT_GITHUB_TOKEN=${{ inputs.github-token }}
-
-        export INPUT_COMPANY=${{ inputs.company }}
-        export INPUT_REPO=${{ inputs.repo }}
-        chmod +x $GITHUB_ACTION_PATH/download.sh
-        $GITHUB_ACTION_PATH/download.sh
-
-        export INPUT_RELEASE_ID=${{ inputs.release-id }}
-        chmod +x $GITHUB_ACTION_PATH/upload.sh
-        $GITHUB_ACTION_PATH/upload.sh
+        echo $TAG
       shell: bash
 
