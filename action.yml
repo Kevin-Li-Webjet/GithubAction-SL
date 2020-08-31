@@ -14,9 +14,12 @@ runs:
   steps: 
     - run: |
         echo ${{ inputs.env-json }} | base64 --decode > data.json
-        export CONTAINERREGISTRY=$(jq '.REGISTRY' data.json)
-        export COMPANY=$(jq '.COMPANY' data.json)
-        export KUBEBOT=$(jq '.KUBEBOT' data.json)
+        CONTAINERREGISTRY=$(jq '.REGISTRY' data.json)
+        COMPANY=$(jq '.COMPANY' data.json)
+        KUBEBOT=$(jq '.KUBEBOT' data.json)
+        echo "::set-env name=CONTAINERREGISTRY::$CONTAINERREGISTRY"
+        echo "::set-env name=COMPANY::$COMPANY"
+        echo "::set-env name=KUBEBOT::$KUBEBOT"
         echo $CONTAINERREGISTRY
         echo $COMPANY
         echo $KUBEBOT
