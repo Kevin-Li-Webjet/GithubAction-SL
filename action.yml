@@ -1,10 +1,10 @@
-name: 'Docker Build'
-description: 'build image, push image (optional)'
+name: 'Init'
+description: 'Init environment variables'
 
 
 inputs:
   env-json:
-    description: 'docker registry'
+    description: 'base64 json'
     required: true
 
 
