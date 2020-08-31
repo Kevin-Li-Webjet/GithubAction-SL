@@ -23,6 +23,7 @@ runs:
         echo "::set-env name=COMPANY::$COMPANY"
         echo "::set-env name=KUBEBOT::$KUBEBOT"
         echo $CONTAINERREGISTRY
+        echo $REGISTRY_SUBPATH
         echo $COMPANY
         echo $KUBEBOT
       shell: bash
