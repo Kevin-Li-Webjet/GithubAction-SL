@@ -2,10 +2,24 @@ name: 'Docker Build'
 description: 'build image, push image (optional)'
 
 
+inputs:
+  env-json:
+    description: 'docker registry'
+    required: true
+    default: '{
+              "version": 1,
+              "CONTAINERREGISTRY": "containerregistrydev.azurecr.io",
+              "REGISTRY-SUBPATH": "webjet",
+              "COMPANY": "Webjet",
+              "KUBEBOT": "http://kubebot.default"
+            }'
 runs:
   using: "composite"
   steps: 
     - run: |
-        echo $TAG
+        CONTAINERREGISTRY=$(jq '.REGISTRY' json.json)
+        REGISTRY-SUBPATH=$(jq '.REGISTRY-SUBPATH' json.json)
+        COMPANY=$(jq '.COMPANY' json.json)
+        KUBEBOT=$(jq '.KUBEBOT' json.json)
       shell: bash
 
