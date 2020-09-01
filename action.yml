@@ -28,3 +28,8 @@ runs:
         echo $KUBEBOT
       shell: bash
 
+  using: "composite"
+  steps: 
+    - run: |
+        echo "123456"
+      shell: bash
