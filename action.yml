@@ -26,8 +26,8 @@ runs:
         fi    
       shell: bash
     
-     - name: Init Env
-       run: |
+    - name: Init Env
+      run: |
         echo ${{ inputs.env-json }} | base64 --decode > data.json
         CONTAINERREGISTRY=$(jq '.REGISTRY' data.json)
         REGISTRY_SUBPATH=$(jq '.REGISTRY_SUBPATH' data.json)
