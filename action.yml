@@ -12,7 +12,8 @@ inputs:
 runs:
   using: "composite"
   steps: 
-    - run: |
+    - name: Check Hash
+      run: |
         head_hash=$(git rev-parse HEAD)
         current_hash=${GITHUB_SHA}
         echo "HEAD hash=$head_hash"
@@ -23,8 +24,10 @@ runs:
            echo "Looks like miss commits, aborting .."
            exit 1
         fi    
+      shell: bash
     
-    
+     - name: Init Env
+       run: |
         echo ${{ inputs.env-json }} | base64 --decode > data.json
         CONTAINERREGISTRY=$(jq '.REGISTRY' data.json)
         REGISTRY_SUBPATH=$(jq '.REGISTRY_SUBPATH' data.json)
