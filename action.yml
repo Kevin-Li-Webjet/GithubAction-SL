@@ -13,6 +13,18 @@ runs:
   using: "composite"
   steps: 
     - run: |
+        head_hash=$(git rev-parse HEAD)
+        current_hash=${GITHUB_SHA}
+        echo "HEAD hash=$head_hash"
+        echo "ACTION hash=$current_hash"
+        if [ $head_hash = $current_hash ]; then
+           echo "hash check ok!"
+        else
+           echo "Looks like miss commits, aborting .."
+           exit 1
+        fi    
+    
+    
         echo ${{ inputs.env-json }} | base64 --decode > data.json
         CONTAINERREGISTRY=$(jq '.REGISTRY' data.json)
         REGISTRY_SUBPATH=$(jq '.REGISTRY_SUBPATH' data.json)
@@ -28,8 +40,4 @@ runs:
         echo $KUBEBOT
       shell: bash
 
-  using: "composite"
-  steps: 
-    - run: |
-        echo "123456"
-      shell: bash
+
